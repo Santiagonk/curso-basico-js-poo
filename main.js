@@ -32,3 +32,28 @@ const juanita = new Student(
 // Hacer que Natalia apruebe otro curso
 natalia.cursosAprobados.push("Curso de Responsive Design");
 
+// Prototipos con la sintaxis de clases
+class Student2 {
+    constructor ({
+            email,
+            name, 
+            age, 
+            cursosAprobados = [],
+        }) {
+        this.name = name;
+        this.age = age;
+        this.cursosAprobados = cursosAprobados;
+        this.email = email;
+    }
+
+    aprobarCurso(nuevoCurso) {
+        this.cursosAprobados.push(nuevoCurso)
+    }
+}
+
+const miguelito = new Student2(
+    { 
+        email: "migelito@email.com",
+        name: "Miguelito", 
+        age: 28
+    })
