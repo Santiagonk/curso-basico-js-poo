@@ -3,8 +3,21 @@ class Course {
       name,
       lessons = [],
     }) {
-      this.name = name;
+      this._name = name;
       this.lessons = lessons;
+    }
+    
+    get name () {
+        return this._name;
+    }
+
+    set name (nuevoNombre){
+        if (nuevoNombre === "Curso Malito de Programación Básica")
+        {
+            console.error("Web... no");
+        } else {
+            this._name = nuevoNombre;
+        }        
     }
 }
 
@@ -16,7 +29,12 @@ class LearningPath {
         this.name = name;
         this.courses = courses;
     }
+
+    // changeName(nuevoNombre) {
+    //     this._name = nuevoNombre;
+    // }
 }
+
 
 class Student {
     constructor ({
@@ -118,3 +136,7 @@ const miguelito1 = new Student({
         escuelaData
     ]
 });
+
+cursoProgBasica.name;
+cursoProgBasica.name = "Nuevo curso de programacion";
+// cursoProgBasica.changeName("Nuevo curso de programacion");
