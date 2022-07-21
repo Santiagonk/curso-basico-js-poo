@@ -1,4 +1,4 @@
-import {PlatziClass} from "./main.mjs";
+import {PlatziClass} from "./main.js";
 
 const clase67 = new PlatziClass({
     name: "JavaScript Orientado a Objetos Basado en Prototipos",
