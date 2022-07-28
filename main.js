@@ -9,26 +9,43 @@ const juan = {
     }
 };
 
-// Propiedades Estaticas Objeto Object
-console.log(Object.keys(juan));
-console.log(Object.getOwnPropertyNames(juan));
-console.log(Object.entries(juan));
 
-console.log(Object.entries(juan)[3]);
-console.log(Object.entries(juan)[3][0]);
-console.log(Object.entries(juan)[3][1]);
-// console.log(Object.entries(juan)[3][1]("Curso 1"));
-
-juan.addCourse("Curso 2");
-// console.log(Object.entries(juan)[3][1]("Curso 3"));
-
-
-console.log(Object.getOwnPropertyDescriptors(juan));
-Object.defineProperty(juan, "pruebaNASA", {
-    value: "extraterrestres",
-    enumerable: true,
-    writable: true,
-    configurable: true
+Object.defineProperty(juan, "",{
+    value:"",
+    writable:true,
+    enumerable:true,
+    configurable:true
 });
 
-console.log(juan);
+Object.defineProperty(juan, "PruebaNasa",{
+    value:"Estraterrestres",
+    writable:false,
+    enumerable:false,
+    configurable:false
+});
+
+Object.defineProperty(juan, "navigator",{
+    value:"Chrome",
+    writable:true,
+    enumerable:false,
+    configurable:true
+});
+
+Object.defineProperty(juan, "editor",{
+    value:"VSCode",
+    writable:false,
+    enumerable:true,
+    configurable:true
+});
+
+
+Object.defineProperty(juan, "terminal",{
+    value:"WSL",
+    writable:true,
+    enumerable:true,
+    configurable:false
+});
+
+Object.seal(juan);
+Object.freeze(juan);
+console.log(Object.getOwnPropertyDescriptors(juan));
