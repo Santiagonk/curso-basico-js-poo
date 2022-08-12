@@ -1,18 +1,3 @@
-const obj1 = {
-    a: 'a',
-    b: 'b',
-    c: {
-        d: "d",
-        e: "e"
-    },
-    editA(){
-        this.a ="AAAAAAAAAAAAAAAAAA"
-    }
-};
-
-// const stringifiedComplexObj = JSON.stringify(obj1);
-// const obj2 = JSON.parse(stringifiedComplexObj);
-
 function isObject(subject){
     return typeof subject == "object";
 }
@@ -52,3 +37,25 @@ function deepCopy(subject){
 
     return copySubject;
 }
+
+const studentBase = {
+    name: undefined,
+    email: undefined,
+    age: undefined,
+    approvedCourses: undefined,
+    learningPaths: undefined,
+    socialMedia: {
+        twitter: undefined,
+        instagram: undefined,
+        facebook: undefined,
+    },
+};
+
+const juan = deepCopy(studentBase);
+// Object.defineProperty(juan, "name", {
+//     value: "Juan",
+//     configurable: false,
+// });
+Object.seal(juan);
+Object.isSealed(juan);
+Object.isFrozen(juan);
