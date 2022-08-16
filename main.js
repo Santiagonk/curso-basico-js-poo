@@ -51,11 +51,48 @@ const studentBase = {
     },
 };
 
-const juan = deepCopy(studentBase);
-// Object.defineProperty(juan, "name", {
-//     value: "Juan",
-//     configurable: false,
-// });
-Object.seal(juan);
-Object.isSealed(juan);
-Object.isFrozen(juan);
+// const juan = deepCopy(studentBase);
+// // Object.defineProperty(juan, "name", {
+// //     value: "Juan",
+// //     configurable: false,
+// // });
+// Object.seal(juan);
+// Object.isSealed(juan);
+// Object.isFrozen(juan);
+
+function requiredParam(param){
+    throw new Error(param + " es obligatorio");
+}
+
+function createStudent({
+    name = requiredParam("name"),
+    email = requiredParam("email"),
+    age,
+    twitter,
+    instagram,
+    facebook,
+    approvedCourses = [],
+    learningPaths = [],
+} = {}){
+    return {
+        name,
+        age,
+        email,
+        socialMedia: {
+            twitter,
+            instagram,
+            facebook
+        },
+        approvedCourses,
+        learningPaths
+    };
+}
+
+const juan = createStudent(
+    {
+        name: "Juanito",
+        email: "correitodejuanito@email",
+        age: 18,    
+        twitter: "juanito"    
+    }
+);
