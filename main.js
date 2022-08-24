@@ -73,28 +73,40 @@ function Student({
     facebook,
     approvedCourses = [],
     learningPaths = [],
-} = {}){
-    
+} = {})
+{
     this.name = name;
     this.email = email;
     this.age = age;
-    this.twitter = twitter;
-    this.instagram = instagram;
-    this.facebook = facebook;
     this.approvedCourses = approvedCourses;
-
-    if (isArray(learningPaths)){
-        this.learningPaths = [];
-        for (learningPath of learningPaths){
-            if(learningPath instanceof LearningPath){
-                this.learningPaths.push(learningPath);
-            }
-        }
-        
+    this.socialMedia = {
+      twitter,
+      instagram,
+      facebook,
     }
-    
-    
-}
+
+
+    const private = {
+        "_learningPaths": [],
+    };
+
+    Object.defineProperty(Student.prototype, "learningPaths",{
+        get(){
+            return private["_learningPaths"];
+        },
+        set(newLp){        
+                if(newLp instanceof LearningPath){
+                    private["_learningPaths"].push(newLp);
+                } else {
+                    console.warn("Alguno de los Lps no es una instancia del protoypo learning path");
+                }
+            },  
+    });
+
+    for (learningPathIndex in learningPaths) {
+        this.learningPaths = learningPaths[learningPathIndex];
+      }
+};
 
 const escuelaWeb = new LearningPath(
     {
@@ -117,10 +129,6 @@ const juan = new Student(
         learningPaths: [
             escuelaWeb,
             escuelaDS,
-            {
-                name: "Impostor",
-                courses: []
-            }
         ]    
     }
 );
